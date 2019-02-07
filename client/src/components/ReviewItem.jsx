@@ -1,26 +1,39 @@
 import React from 'react';
+import StarsRating from 'react-star-ratings';
 
-export default (props) => {
+const tableStyle = {
+  width: '100%',
+  display: 'inline-table'
+}
+
+const image = {
+  borderRadius: '50%',
+  width: '60px',
+  height: '60px'
+}
+
+export default ({ review }) => {
   return (
-    <table width="500px">
+    <table style={tableStyle}>
       <tbody>
-        <tr>
-          <td rowSpan="2">
-            I AM AN IMAGE
+        <tr height="25px">
+          <td rowSpan="2" width="75px">
+            <img src={review.avatar} style={image} />
           </td>
-          <td text-align="right" vertical-align="center">
-            I am reviewer {props.review}
+          <td valign="center">
+            <span>{review.username}</span>
+            &nbsp;-&nbsp;
+            <span>{review.timestamp}</span>
+            &nbsp;&nbsp;&nbsp;
+            <StarsRating rating={review.stars} starRatedColor={"#ffa534"} starDimension={"20px"} starSpacing={"2px"} />
           </td>
-          <td text-align="right" vertical-align="center">
-            Have some stars
-          </td>
-          <td text-align="right" vertical-align="center">
+          <td align="right" valign="center">
             This review was helpful!
           </td>
         </tr>
         <tr>
           <td word-wrap="normal" colSpan="4">
-            Hello, This is my review. It is long long long long long long long long long long long long long long long long long long long long long.
+            {review.review_text}
           </td>
         </tr>
       </tbody>

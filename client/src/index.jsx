@@ -7,21 +7,28 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      id: 1,
+      reviews: []
     }
   }
 
-  componentDidMount() {
+  getReviews() {
+    Axios.get(`/query/${this.state.id}`)
+      .then((data) => {
+        this.setState({
+          reviews: data.data
+        })
+      })
+  }
 
+  componentDidMount() {
+    this.getReviews();
   }
 
   render() {
     return (
       <div>
-        Hello
-        <div>
-          <ReviewsList reviews={[1, 2, 3, 4, 5]} />
-        </div>
+        <ReviewsList reviews={this.state.reviews} />
       </div>
     )
   }
