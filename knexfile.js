@@ -5,7 +5,7 @@ module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: process.env.DB_CONNECTION_STRING,
+    connection: process.env.PG_CONNECTION_STRING,
     migrations: {
       directory: __dirname + '/knex/migrations'
     },
