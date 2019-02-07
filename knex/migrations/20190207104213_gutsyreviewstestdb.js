@@ -27,7 +27,7 @@ exports.up = function(knex, Promise) {
         .inTable('users');
       table.string('review_text')
         .notNull();
-      table.dateTime('timestamp')
+      table.string('timestamp')
         .notNull();
       table.integer('stars')
         .notNull();

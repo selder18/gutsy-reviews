@@ -27,9 +27,6 @@ export default ({ review }) => {
             &nbsp;&nbsp;&nbsp;
             <StarsRating rating={review.stars} starRatedColor={"#ffa534"} starDimension={"20px"} starSpacing={"2px"} />
           </td>
-          <td align="right" valign="center">
-            This review was helpful!
-          </td>
         </tr>
         <tr>
           <td word-wrap="normal" colSpan="4">

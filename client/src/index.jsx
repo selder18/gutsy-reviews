@@ -7,7 +7,7 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 1,
+      id: 2,
       reviews: []
     }
   }
