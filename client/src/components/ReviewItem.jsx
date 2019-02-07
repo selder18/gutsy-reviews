@@ -1,5 +1,5 @@
 import React from 'react';
-import StarsRating from 'react-star-ratings';
+import StarsRating from 'react-star-rating-component';
 
 const tableStyle = {
   width: '100%',
@@ -25,7 +25,7 @@ export default ({ review }) => {
             &nbsp;-&nbsp;
             <span>{review.timestamp}</span>
             &nbsp;&nbsp;&nbsp;
-            <StarsRating rating={review.stars} starRatedColor={"#ffa534"} starDimension={"20px"} starSpacing={"2px"} />
+            <StarsRating value={review.stars} starColor={"#ffa534"} emptyStarColor={'grey'} editing={false} />
           </td>
         </tr>
         <tr>

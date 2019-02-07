@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReviewsList from './components/ReviewsList.jsx';
 import Axios from 'axios';
+import SubmitReview from './components/SubmitReview.jsx'
+
+const divStyle = {
+  display: 'inline-block',
+  width: '900px'
+}
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -27,7 +33,8 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={divStyle}>
+        <SubmitReview />
         <ReviewsList reviews={this.state.reviews} />
       </div>
     )

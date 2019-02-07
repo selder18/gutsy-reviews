@@ -1,15 +1,11 @@
 import React from 'react';
 import ReviewItem from './ReviewItem.jsx';
 
-const reviewList = {
-  display: 'inline-block',
-  width: '900px'
-}
-
 export default (props) => {
+  const reviews = props.reviews.reverse();
   return (
-    <div id="review-list" style={reviewList}>
-      {props.reviews.map((review, index) => (
+    <div>
+      {reviews.map((review, index) => (
         <div>
           <ReviewItem key={`${index}`} review={review} />
           &nbsp;
