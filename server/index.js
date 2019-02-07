@@ -21,6 +21,8 @@ app.post('/query', (req, res, next) => {
       });
   })
 })
-app.get('/query')
+app.get('/query', (req, res, next) => {
+  
+})
 
 app.listen(port);
