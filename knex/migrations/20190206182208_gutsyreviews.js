@@ -5,13 +5,16 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('users', (table) => {
       table.increments('id').primary();
-      table.string('name');
-      table.string('avatar');
+      table.string('name')
+        .notNull();
+      table.string('avatar')
+        .notNull();
     }),
 
     knex.schema.createTable('adventures', (table) => {
       table.increments('id').primary();
-      table.string('name');
+      table.string('name')
+        .notNull();
     }),
 
     knex.schema.createTable('reviews', (table) => {
@@ -22,10 +25,16 @@ exports.up = function(knex, Promise) {
       table.integer('poster_id')
         .references('id')
         .inTable('users');
-      table.string('review_text');
-      table.integer('stars');
-      table.integer('thumbs_up');
-      table.integer('thumbs_down');
+      table.string('review_text')
+        .notNull();
+      table.dateTime('timestamp')
+        .notNull();
+      table.integer('stars')
+        .notNull();
+      table.integer('thumbs_up')
+        .nullable();
+      table.integer('thumbs_down')
+        .nullable();
     })
   ])
 };
