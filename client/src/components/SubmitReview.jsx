@@ -5,8 +5,16 @@ import Axios from 'axios';
 import faker from 'faker';
 import '@babel/polyfill';
 
+const mainDiv = {
+  padding: "10px"
+}
+
+const submitButton = {
+  borderRadius: "5px"
+}
+
 const reviewStyle = {
-  width: "100%",
+  width: "90%",
   height: "200px",
   padding: '5px',
   resize: "none",
@@ -90,13 +98,13 @@ class SubmitReview extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={mainDiv}>
         <form id="submitReview">
           <input id="submitUsername" type="text" name="username" placeholder="Username" style={username} ></input> &nbsp;
           &nbsp;<StarsRating name="reviewStars" rating={this.state.rating} starRatedColor={"#ffa534"} starHoverColor={"#ffa534"} starEmptyColor={'grey'} changeRating={this.changeRating.bind(this)} starDimension={'15px'} starSpacing={'0px'} />
           <br></br>
           <textarea id="submitText" placeholder="Write your review of this Gutsy adventure here!" style={reviewStyle} /> &nbsp;
-          <input type="Submit" defaultValue="Submit" onClick={(e) => {
+          <input type="Submit" defaultValue="Submit" style={submitButton} onClick={(e) => {
             e.preventDefault();
             this.postReview();
           }}></input>
