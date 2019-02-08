@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 app.post('/query', (req, res, next) => {
-  console.log('we at req.body', req.body.payload);
   let column,
     searchTerm;
   if (req.body.table === 'reviews') {
@@ -19,21 +18,19 @@ app.post('/query', (req, res, next) => {
     searchTerm = req.body.payload.adventure_id;
   } else {
     column = 'name';
-    searchTerm = req.body.payload.name
+    searchTerm = req.body.payload.name;
   }
   db(req.body.table).insert(req.body.payload)
   .then(() => {
     db.select().from(req.body.table)
       .where(column, `${searchTerm}`)
       .then((data) => {
-        console.log('we ehrererere');
         res.json(data);
       });
   })
 })
 
 app.get('/query/user/:id', (req,res, next) => {
-  console.log(req.params.id);
   db('users')
     .select('id')
     .where('name', `${req.params.id}`)
