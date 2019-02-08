@@ -7,7 +7,7 @@ export default (props) => {
     <div>
       {reviews.map((review, index) => (
         <div>
-          <ReviewItem key={`${index}`} review={review} />
+          <ReviewItem key={`reviewItem${index}`} review={review} />
           &nbsp;
           <br></br>
         </div>

@@ -11,18 +11,38 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 app.post('/query', (req, res, next) => {
+  console.log('we at req.body', req.body.payload);
+  let column,
+    searchTerm;
+  if (req.body.table === 'reviews') {
+    column = 'adventure_id';
+    searchTerm = req.body.payload.adventure_id;
+  } else {
+    column = 'name';
+    searchTerm = req.body.payload.name
+  }
   db(req.body.table).insert(req.body.payload)
   .then(() => {
     db.select().from(req.body.table)
+      .where(column, `${searchTerm}`)
       .then((data) => {
-        console.log(data);
+        console.log('we ehrererere');
         res.json(data);
       });
   })
 })
 
-app.get('/query/:id', (req, res, next) => {
+app.get('/query/user/:id', (req,res, next) => {
   console.log(req.params.id);
+  db('users')
+    .select('id')
+    .where('name', `${req.params.id}`)
+    .then((data) => {
+      res.json(data);
+    })
+})
+
+app.get('/query/:id', (req, res, next) => {
   db('reviews')
     .join('users', 'reviews.poster_id', '=', 'users.id')
     .join('adventures', 'reviews.adventure_id', '=', 'adventures.id')
@@ -31,7 +51,6 @@ app.get('/query/:id', (req, res, next) => {
     .then((data) => {
       res.json(data);
     });
-
 })
 
 app.listen(port);

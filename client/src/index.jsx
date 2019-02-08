@@ -13,7 +13,7 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 2,
+      id: this.props.id || 2,
       reviews: []
     }
   }
@@ -31,10 +31,16 @@ class Reviews extends React.Component {
     this.getReviews();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state) {
+      this.getReviews();
+    }
+  }
+
   render() {
     return (
       <div style={divStyle}>
-        <SubmitReview />
+        <SubmitReview adventure_id={this.state.id} getReviews={this.getReviews.bind(this)} />
         <ReviewsList reviews={this.state.reviews} />
       </div>
     )

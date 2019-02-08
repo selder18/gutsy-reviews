@@ -23,9 +23,9 @@ export default ({ review }) => {
           <td valign="center">
             <span>{review.username}</span>
             &nbsp;-&nbsp;
-            <span>{review.timestamp}</span>
+            <span>{review.timestamp.slice(0, 10)}</span>
             &nbsp;&nbsp;&nbsp;
-            <StarsRating value={review.stars} starColor={"#ffa534"} emptyStarColor={'grey'} editing={false} />
+            <StarsRating name="reviewStars" value={review.stars} starColor={"#ffa534"} emptyStarColor={'grey'} editing={false} />
           </td>
         </tr>
         <tr>
