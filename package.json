@@ -37,7 +37,6 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-star-rating-component": "^1.4.1",
-    "react-star-ratings": "^2.3.0",
     "webpack": "^4.29.2",
     "webpack-cli": "^3.2.3"
   }
