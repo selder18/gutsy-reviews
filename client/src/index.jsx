@@ -6,14 +6,17 @@ import SubmitReview from './components/SubmitReview.jsx'
 
 const divStyle = {
   display: 'inline-block',
-  width: '900px'
+  width: '900px',
+  padding: "5px",
+  borderRadius: "15px",
+  border: "2px #84D8FF solid"
 }
 
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.id || 2,
+      id: this.props.id || 1,
       reviews: []
     }
   }
