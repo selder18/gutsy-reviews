@@ -8,8 +8,9 @@ const divStyle = {
   display: 'inline-block',
   width: '900px',
   padding: "5px",
-  borderRadius: "15px",
-  border: "2px #84D8FF solid"
+  borderRadius: "10px",
+  border: "2px #242121 solid",
+  boxShadow: "100px 100px grey;"
 }
 
 class Reviews extends React.Component {

@@ -4,7 +4,8 @@ import ReviewItem from './ReviewItem.jsx';
 const outerDiv = {
   padding: "5px",
   // borderRadius: "15px",
-  borderTop: "1px #84D8FF solid"
+  borderTop: "1px #242121 solid",
+  boxShadow: "10px 10px grey;"
 }
 
 const innerDiv = {
