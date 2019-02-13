@@ -5,7 +5,7 @@ const app = express();
 Promise.promisifyAll(app);
 const db = require('../db/index.js')
 const path = require('path');
-const port = process.env.PORT || 3004;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
