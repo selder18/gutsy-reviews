@@ -10,27 +10,22 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
-app.post('/query', (req, res, next) => {
-  let column,
-    searchTerm;
-  if (req.body.table === 'reviews') {
-    column = 'adventure_id';
-    searchTerm = req.body.payload.adventure_id;
-  } else {
-    column = 'name';
-    searchTerm = req.body.payload.name;
-  }
-  db(req.body.table).insert(req.body.payload)
+app.post('/query', (req, res) => {
+  const table = req.body.table,
+    payload = req.body.payload,
+    column = (table === 'reviews') ? 'adventure_id' : 'name', //setting the column name depending on whether we're asking for reviews (adventure_id), or users/adventures (name)
+    searchTerm = (table === 'reviews') ? payload.adventure_id : payload.name; //same as above but for th conditional term
+  db(table).insert(payload)
   .then(() => {
-    db.select().from(req.body.table)
-      .where(column, `${searchTerm}`)
+    db.select().from(table) //returns the table so that when we insert a user, we can retrieve the id
+      .where(column, `${searchTerm}`) //search for the terms and column designated on lines 14/15
       .then((data) => {
         res.json(data);
       });
   })
 })
 
-app.get('/query/user/:id', (req,res, next) => {
+app.get('/query/user/:id', (req,res) => {
   db('users')
     .select('id')
     .where('name', `${req.params.id}`)
@@ -39,11 +34,11 @@ app.get('/query/user/:id', (req,res, next) => {
     })
 })
 
-app.get('/query/:id', (req, res, next) => {
+app.get('/query/reviews/:id', (req, res) => {
   db('reviews')
-    .join('users', 'reviews.poster_id', '=', 'users.id')
-    .join('adventures', 'reviews.adventure_id', '=', 'adventures.id')
-    .select({username: 'users.name', adventure: 'adventures.name'}, 'users.avatar', 'reviews.review_text', 'reviews.timestamp', 'reviews.stars', 'reviews.thumbs_up', 'reviews.thumbs_down')
+    .join('users', 'reviews.poster_id', '=', 'users.id') //join table for users
+    .join('adventures', 'reviews.adventure_id', '=', 'adventures.id') //join table for adventures
+    .select({username: 'users.name', adventure: 'adventures.name'}, 'users.avatar', 'reviews.review_text', 'reviews.timestamp', 'reviews.stars', 'reviews.thumbs_up', 'reviews.thumbs_down') //changes users.name to username and adventures.name to adventure, selects all required fields
     .where('reviews.adventure_id', req.params.id)
     .then((data) => {
       res.json(data);

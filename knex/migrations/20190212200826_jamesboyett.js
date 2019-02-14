@@ -25,7 +25,7 @@ exports.up = function(knex, Promise) {
       table.integer('poster_id')
         .references('id')
         .inTable('users');
-      table.string('review_text')
+      table.string('review_text', 1000)
         .notNull();
       table.string('timestamp')
         .notNull();

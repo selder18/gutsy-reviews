@@ -1,38 +1,19 @@
 import React from 'react';
 import StarsRating from 'react-star-ratings';
-
-const tableStyle = {
-  width: '100%',
-  display: 'inline-table'
-}
-
-const image = {
-  borderRadius: '50%',
-  width: '60px',
-  height: '60px'
-}
-
-const user = {
-  fontSize: '20px',
-  color: '#023750'
-}
-
-const timestamp = {
-  color: 'grey'
-}
+import { item } from '../../style.js';
 
 export default ({ review }) => {
   return (
-    <table style={tableStyle}>
+    <table style={item.table}>
       <tbody>
-        <tr height="25px">
+        <tr style={item.userInfo}>
           <td rowSpan="2" width="75px">
-            <img src={review.avatar} style={image} />
+            <img src={review.avatar} style={item.image} />
           </td>
-          <td valign="center">
-            <span style={user} >{review.username}</span>
+          <td style={item.userInfo}>
+            <span style={item.username} >{review.username}</span>
             &nbsp;-&nbsp;
-            <span style={timestamp}>{review.timestamp.slice(0, 10)}</span>
+            <span style={item.timestamp} >{review.timestamp.slice(0, 10)}</span> {/* The slice is to only get the date and not time */}
             &nbsp;&nbsp;&nbsp;
             <StarsRating name="reviewStars" rating={review.stars} starRatedColor={"#ffa534"} starEmptyColor={'grey'} starDimension={'15px'} starSpacing={'0px'} />
           </td>
@@ -44,5 +25,5 @@ export default ({ review }) => {
         </tr>
       </tbody>
     </table>
-  )
+  );
 }

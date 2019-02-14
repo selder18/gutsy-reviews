@@ -4,7 +4,7 @@ const makeSeed = {
   
   makeUsers: () => {
     const users = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i++) { //make 100 random users each with a random avatar
       const obj = {
         name: faker.internet.userName(),
         avatar: faker.image.avatar()
@@ -16,7 +16,7 @@ const makeSeed = {
   
   makeAdventures: () => {
     const adventures = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i++) { //make 100 random adventures
       const obj = {
         name: faker.random.locale()
       }
