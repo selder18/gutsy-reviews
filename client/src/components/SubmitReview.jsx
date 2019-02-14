@@ -35,8 +35,8 @@ const SubmitReview = (props) => {
       }
     },
 
-    makeReviewBody = (name, review, date, stars) => {
-      return {
+    makeReviewBody = (name, review, date, stars) => (
+      {
         table: 'reviews',
         payload: {
           adventure_id: props.adventure_id,
@@ -45,8 +45,8 @@ const SubmitReview = (props) => {
           timestamp: date,
           stars: stars
         }
-      };
-    },
+      }
+    ),
 
     resetReviewFields = () => {
       document.getElementById('submitText').value = '';
