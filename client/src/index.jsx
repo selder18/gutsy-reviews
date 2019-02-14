@@ -1,17 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReviewsList from './components/ReviewsList.jsx';
 import Axios from 'axios';
 import SubmitReview from './components/SubmitReview.jsx'
-
-const divStyle = {
-  display: 'inline-block',
-  width: '900px',
-  padding: "5px",
-  borderRadius: "10px",
-  border: "2px #242121 solid",
-  boxShadow: "100px 100px grey;"
-}
+import ReviewsList from './components/ReviewsList.jsx';
+import { indexStyling } from '../style.js';
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -23,7 +15,7 @@ class Reviews extends React.Component {
   }
 
   getReviews() {
-    Axios.get(`/query/${this.state.id}`)
+    Axios.get(`/query/reviews/${this.state.id}`)
       .then((data) => {
         this.setState({
           reviews: data.data
@@ -43,15 +35,13 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      <div style={divStyle}>
+      <div style={indexStyling}>
         <SubmitReview adventure_id={this.state.id} getReviews={this.getReviews.bind(this)} />
         <ReviewsList reviews={this.state.reviews} />
       </div>
-    )
+    );
   }
 }
-
-
 
 ReactDOM.render(<Reviews />, document.getElementById('reviews'));
 

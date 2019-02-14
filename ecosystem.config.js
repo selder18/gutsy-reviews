@@ -1,8 +1,13 @@
 module.exports = {
   apps: [{
     name: 'gutsyreviews',
-    script: 'server/index.js'
-    
+    script: 'server/index.js',
+    env: {
+      NODE_ENV: "development"
+    },
+    env_production : {
+      NODE_ENV: "production"
+    }
   }],
   deploy: {
     production: {

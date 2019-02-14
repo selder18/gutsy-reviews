@@ -1,33 +1,21 @@
 import React from 'react';
 import ReviewItem from './ReviewItem.jsx';
-
-const outerDiv = {
-  padding: "5px",
-  // borderRadius: "15px",
-  borderTop: "1px #242121 solid",
-  boxShadow: "10px 10px grey;"
-}
-
-const innerDiv = {
-  height: "700px",
-  overflow: "auto"
-}
+import { list } from '../../style.js';
 
 export default (props) => {
-  const reviews = props.reviews.reverse();
+  const reviews = props.reviews.reverse(); //reversing the array so newest is shown first
   return (
-    <div style={outerDiv}>
-      <div style={innerDiv}>
+    <div style={list.outer}>
+      <div style={list.inner}>
         {reviews.map((review, index) => (
-          <div>
-            <ReviewItem key={`reviewItem${index}`} review={review} />
+          <div key={index}>
+            <ReviewItem review={review} />
             &nbsp;
-            <br></br>
+            <br />
           </div>
-        )
-        )}
+        ))}
       </div>
     </div>
-  )
+  );
 }
 

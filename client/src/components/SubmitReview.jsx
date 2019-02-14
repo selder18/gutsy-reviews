@@ -1,32 +1,10 @@
 import React from 'react';
-import moment from 'moment';
-import StarsRating from 'react-star-ratings'
 import Axios from 'axios';
+import StarsRating from 'react-star-ratings'
 import faker from 'faker';
+import moment from 'moment';
+import { submit } from '../../style.js';
 import '@babel/polyfill';
-
-const mainDiv = {
-  padding: "10px"
-}
-
-const submitButton = {
-  borderRadius: "5px"
-}
-
-const reviewStyle = {
-  width: "90%",
-  height: "200px",
-  padding: '5px',
-  resize: "none",
-  borderRadius: "15px",
-  border: "1px #bababa solid"
-}
-
-const username = {
-  borderRadius: "5px",
-  border: "1px #bababa solid",
-  paddingLeft: "5px"
-}
 
 class SubmitReview extends React.Component {
   constructor(props) {
@@ -41,34 +19,29 @@ class SubmitReview extends React.Component {
     return result.data;
   }
 
+  makeUsersBody(name) {
+    return {
+      table: 'users',
+      payload: {
+        name,
+        avatar: faker.image.avatar()
+      }
+    };
+  }
+
   async getPosterID(name) {
     let result = await Axios.get(`/query/user/${name}`);
-    if (result.data.length) {
+    if (result.data.length) { //if the user exists, return the id
       return result.data[0].id;
-    } else {
-      let avatar = faker.image.avatar();
-      let body = {
-        table: 'users',
-        payload: {
-          name,
-          avatar
-        }
-      };
-      let test = await this.insertUser(body);
+    } else { //else if user doesn't exist, make the user
+      let body = this.makeUsersBody(name); //make the body to submit in the POST request
+      let test = await this.insertUser(body); //and then return the id of the inserted user
       return test[0].id;
     }
   }
 
-  async postReview() {
-    const review = document.getElementById('submitText').value,
-      username = document.getElementById('submitUsername').value,
-      name = await this.getPosterID(username),
-      stars = this.state.rating,
-      date = moment().format();
-    if (review === '') {
-      alert
-    }
-    const body = {
+  makeReviewBody(name, review, date, stars) {
+    return {
       table: 'reviews',
       payload: {
         adventure_id: this.props.adventure_id,
@@ -78,14 +51,27 @@ class SubmitReview extends React.Component {
         stars: stars
       }
     };
+  }
+
+  resetReviewFields() {
+    document.getElementById('submitText').value = '';
+    document.getElementById('submitUsername').value = '';
+    this.props.getReviews()
+    this.setState({
+      rating: 0
+    });
+  }
+
+  async postReview() {
+    const review = document.getElementById('submitText').value, //grab review text
+      username = document.getElementById('submitUsername').value, //grab username
+      name = await this.getPosterID(username), //get id of user/make new user (see above function)
+      stars = this.state.rating, //grab stars
+      date = moment().format(), //find current date
+      body = this.makeReviewBody(name, review, date, stars); //makes the body for submitting reviews
     Axios.post('/query', body)
       .then(() => {
-        document.getElementById('submitText').value = '';
-        document.getElementById('submitUsername').value = '';
-        this.props.getReviews()
-        this.setState({
-          rating: 0
-        })
+        this.resetReviewFields();
       })
       .catch((err) => { throw err });
   }
@@ -96,22 +82,28 @@ class SubmitReview extends React.Component {
     });
   }
 
+  submitReview(e) {
+    e.preventDefault();
+    this.postReview();
+  }
+
   render() {
     return (
-      <div style={mainDiv}>
+      <div style={submit.main}>
         <form id="submitReview">
-          <input id="submitUsername" type="text" name="username" placeholder="Username" style={username} ></input> &nbsp;
-          &nbsp;<StarsRating name="reviewStars" rating={this.state.rating} starRatedColor={"#ffa534"} starHoverColor={"#ffa534"} starEmptyColor={'grey'} changeRating={this.changeRating.bind(this)} starDimension={'15px'} starSpacing={'0px'} />
-          <br></br>
-          <textarea id="submitText" placeholder="Write your review of this Gutsy adventure here!" style={reviewStyle} /> &nbsp;
-          <input type="Submit" defaultValue="Submit" style={submitButton} onClick={(e) => {
-            e.preventDefault();
-            this.postReview();
-          }}></input>
-          <br></br>
+          <input id="submitUsername" type="text" name="username" placeholder="Username" style={submit.username} />
+          &nbsp;&nbsp;
+          <StarsRating name="reviewStars" rating={this.state.rating} starRatedColor={"#ffa534"} starHoverColor={"#ffa534"} starEmptyColor={'grey'} changeRating={this.changeRating.bind(this)} starDimension={'15px'} starSpacing={'0px'} />
+          <br />
+          <textarea id="submitText" placeholder="Write your review of this Gutsy adventure here!" style={submit.text} />
+          &nbsp;
+          <input type="Submit" defaultValue="Submit" style={submit.button} onClick={(e) => {
+            this.submitReview(e);
+          }} />
+          <br />
         </form>
       </div>
-    )
+    );
   }
 }
 
