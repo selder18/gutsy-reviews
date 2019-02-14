@@ -9,6 +9,7 @@
     "server-dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "restart": "pm2 startOrRestart ecosystem.config.js",
+    "update": "pm2 kill && pm2 start ecosystem.config.js --env production",
     "deploy": "pm2 deploy ecosystem.config.js production"
   },
   "repository": {
