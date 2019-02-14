@@ -62,6 +62,6 @@ module.exports = {
     },
     timestamp: {
       color: 'grey'
-    },
+    }
   }
 };
