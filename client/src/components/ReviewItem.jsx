@@ -7,7 +7,7 @@ export default ({ review }) => {
     <table style={item.table}>
       <tbody>
         <tr style={item.userInfo}>
-          <td rowSpan="2" width="75px">
+          <td rowSpan="2" style={item.imageContainer}>
             <img src={review.avatar} style={item.image} />
           </td>
           <td style={item.userInfo}>
@@ -19,7 +19,7 @@ export default ({ review }) => {
           </td>
         </tr>
         <tr>
-          <td word-wrap="normal" colSpan="4">
+          <td style={item.review}>
             {review.review_text}
           </td>
         </tr>

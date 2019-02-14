@@ -49,6 +49,8 @@ module.exports = {
       height: '25px'
     },
     image: {
+      position: 'absolute',
+      top: '0px',
       borderRadius: '50%',
       width: '60px',
       height: '60px'
@@ -56,12 +58,21 @@ module.exports = {
     userInfo: {
       valign: 'center'
     },
+    imageContainer: {
+      position: 'relative',
+      width: '75px'
+    },
     username: {
       fontSize: '20px',
       color: '#023750'
     },
     timestamp: {
       color: 'grey'
+    },
+    review: {
+      wordWrap: 'normal',
+      colSpan: 4,
+      whiteSpace: 'pre-wrap'
     }
   }
 };
