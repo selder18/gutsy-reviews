@@ -5,19 +5,19 @@ import SubmitReview from './components/SubmitReview.jsx'
 import ReviewsList from './components/ReviewsList.jsx';
 import { indexStyling } from '../style.js';
 
-const Reviews = (props) => {
-  const [id, setId] = useState(props.id || 1),
-    [reviews, setReviews] = useState([]);
+const Reviews = (props: Object) => {
+  const [id: number, setId: Function] = useState(props.id || 1),
+    [reviews: Array<Object>, setReviews: Function] = useState([]);
 
-  const getReviews = () => {
+  const getReviews = (): void => {
     Axios.get(`/query/reviews/${id}`)
-      .then((data) => {
+      .then((data: Object): void => {
         setReviews(data.data);
       })
-      .catch((err) => { throw err });
+      .catch((err: Error): void => { throw err });
   };
 
-  useEffect(() => {
+  useEffect((): void => {
     getReviews();
   }, id); //only want to update if the id changes, else we invoke getReviews manually
 

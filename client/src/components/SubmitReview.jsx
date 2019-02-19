@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// @flow 
+import React, { useState }  from 'react';
 import Axios from 'axios';
 import StarsRating from 'react-star-ratings'
 import faker from 'faker';
@@ -6,15 +7,15 @@ import moment from 'moment';
 import { submit } from '../../style.js';
 import '@babel/polyfill';
 
-const SubmitReview = (props) => {
-  const [rating, setRating] = useState(0),
+const SubmitReview = (props: Object) => {
+  const [rating: number, setRating: Function] = useState(0),
 
-    insertUser = async (body) => {
-      let result = await Axios.post('/query', body);
-      return result.data;
+    insertUser = async (body: Object): Promise<any>  => {
+      let result: Object = await Axios.post('/query', body);
+      return result.data[0].id;
     },
 
-    makeUsersBody = (name) => (
+    makeUsersBody = (name: string): Object => (
       {
         table: 'users',
         payload: {
@@ -24,18 +25,18 @@ const SubmitReview = (props) => {
       }
     ),
 
-    getPosterID = async (name) => {
-      let result = await Axios.get(`/query/user/${name}`);
-      if (result.data.length) { //if the user exists, return the id
-        return result.data[0].id;
+    getPosterID = async (name: string): Promise<any> => {
+      let results: Object = await Axios.get(`/query/user/${name}`);
+      if (results.data.length) { //if the user exists, return the id
+        return results.data[0].id;
       } else { //else if user doesn't exist, make the user
-        let body = makeUsersBody(name); //make the body to submit in the POST request
-        let test = await insertUser(body); //and then return the id of the inserted user
-        return test[0].id;
+        let body: Object = makeUsersBody(name); //make the body to submit in the POST request
+        let userID: Promise<mixed> = await insertUser(body); //and then return the id of the inserted user
+        return userID;
       }
     },
 
-    makeReviewBody = (name, review, date, stars) => (
+    makeReviewBody = (name: number, review: string, date: string, stars: number): Object => (
       {
         table: 'reviews',
         payload: {
@@ -48,30 +49,30 @@ const SubmitReview = (props) => {
       }
     ),
 
-    resetReviewFields = () => {
-      document.getElementById('submitText').value = '';
-      document.getElementById('submitUsername').value = '';
+    resetReviewFields = (): void => {
+      (document.getElementById('submitText'): any).value = '';
+      (document.getElementById('submitUsername'): any).value = '';
       props.getReviews()
       setRating(0);
     },
 
 
 
-    postReview = async () => {
-      const review = document.getElementById('submitText').value, //grab review text
-        username = document.getElementById('submitUsername').value, //grab username
-        name = await getPosterID(username), //get id of user/make new user (see above function)
-        stars = rating, //grab stars
-        date = moment().format(), //find current date
-        body = makeReviewBody(name, review, date, stars); //makes the body for submitting reviews
+    postReview = async (): Promise<any> => {
+      const review: string = (document.getElementById('submitText'): any).value, //grab review text
+        username: string = (document.getElementById('submitUsername'): any).value, //grab username
+        name: number = await getPosterID(username), //get id of user/make new user (see above function)
+        stars: number = rating, //grab stars
+        date: string = moment().format(), //find current date
+        body: Object = makeReviewBody(name, review, date, stars); //makes the body for submitting reviews
       Axios.post('/query', body)
-        .then(() => {
+        .then((): void => {
           resetReviewFields();
         })
-        .catch((err) => { throw err });
+        .catch((err: Error): void => { throw err });
     },
 
-    submitReview = (e) => {
+    submitReview = (e: Object) => {
       e.preventDefault();
       postReview();
     };

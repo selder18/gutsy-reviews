@@ -2,7 +2,7 @@ import React from 'react';
 import StarsRating from 'react-star-ratings';
 import { item } from '../../style.js';
 
-export default ({ review }) => {
+export default ({ review }: {review: Object}) => {
   return (
     <table style={item.table}>
       <tbody>
@@ -15,7 +15,7 @@ export default ({ review }) => {
             &nbsp;-&nbsp;
             <span style={item.timestamp} >{review.timestamp.slice(0, 10)}</span> {/* The slice is to only get the date and not time */}
             &nbsp;&nbsp;&nbsp;
-            <StarsRating name="reviewStars" rating={review.stars} starRatedColor={"#ffa534"} starEmptyColor={'grey'} starDimension={'15px'} starSpacing={'0px'} />
+            <StarsRating name="reviewStars" rating={review.stars} starRatedColor="#ffa534" starEmptyColor="grey" starDimension="15px" starSpacing="0px" />
           </td>
         </tr>
         <tr>
@@ -26,4 +26,4 @@ export default ({ review }) => {
       </tbody>
     </table>
   );
-}
+};
