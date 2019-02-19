@@ -1,5 +1,4 @@
 // @flow
-// $FlowIgnoreError
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
@@ -7,12 +6,17 @@ import SubmitReview from './components/SubmitReview';
 import ReviewsList from './components/ReviewsList';
 import { indexStyling } from '../style';
 
+const server = process.env.AXIOS_LOCATION || 'http://localhost:3000';
+
 const Reviews = ({ id }: { id: number }) => {
-  const [currentAdventure: number] = useState(id || 1);
+  const [
+    currentAdventure: number,
+    setCurrentAdventure: Function //eslint-disable-line
+  ] = useState(id || 1);
   const [reviews: Array<Object>, setReviews: Function] = useState([]);
 
   const getReviews = (): void => {
-    Axios.get(`/query/reviews/${currentAdventure}`)
+    Axios.get(`${server}/query/reviews/${currentAdventure}`)
       .then(
         (data: Object): void => {
           setReviews(data.data);

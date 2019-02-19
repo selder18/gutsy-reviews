@@ -1,28 +1,29 @@
 // @flow
-// $FlowIgnoreError
 import React, { useState } from 'react';
 import Axios from 'axios';
 import StarsRating from 'react-star-ratings';
-import faker from 'faker';
+import { image } from 'faker';
 import moment from 'moment';
 import { submit } from '../../style';
 import '@babel/polyfill';
 
+const server = process.env.AXIOS_LOCATION || 'http://localhost:3000';
+
 const SubmitReview = (props: Object) => {
   const [rating: number, setRating: Function] = useState(0);
   const insertUser = async (body: Object): Promise<any> => {
-    const result: Object = await Axios.post('/query', body);
+    const result: Object = await Axios.post(`${server}/query`, body);
     return result.data[0].id;
   };
   const makeUsersBody = (name: string): Object => ({
     table: 'users',
     payload: {
       name,
-      avatar: faker.image.avatar()
+      avatar: image.avatar()
     }
   });
   const getPosterID = async (name: string): Promise<any> => {
-    const results: Object = await Axios.get(`/query/user/${name}`);
+    const results: Object = await Axios.get(`${server}/query/user/${name}`);
     if (results.data.length) {
       // if the user exists, return the id
       return results.data[0].id;
@@ -61,7 +62,7 @@ const SubmitReview = (props: Object) => {
     const stars: number = rating; // grab stars
     const date: string = moment().format(); // find current date
     const body: Object = makeReviewBody(name, review, date, stars); // makes the body for submitting reviews
-    Axios.post('/query', body)
+    Axios.post(`${server}/query`, body)
       .then(
         (): void => {
           resetReviewFields();
