@@ -1,5 +1,6 @@
 // Update with your config settings.
 require('dotenv').config();
+const path = require('path');
 
 module.exports = {
 
@@ -7,10 +8,10 @@ module.exports = {
     client: 'postgresql',
     connection: process.env.PG_CONNECTION_STRING,
     migrations: {
-      directory: __dirname + '/knex/migrations'
+      directory: path.join(__dirname, '/knex/migrations')
     },
     seeds: {
-      directory: __dirname + '/knex/seeds'
+      directory: path.join(__dirname, '/knex/seeds')
     }
   },
 
@@ -18,7 +19,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -43,10 +44,10 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: __dirname + '/knex/migrations'
+      directory: `${__dirname }/knex/migrations`
     },
     seeds: {
-      directory: __dirname + '/knex/seeds'
+      directory: `${__dirname }/knex/seeds`
     }
   }
 

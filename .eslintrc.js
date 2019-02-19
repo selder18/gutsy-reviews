@@ -5,12 +5,14 @@
  */
 
 module.exports = {
+  'extends': ['airbnb', 'prettier', 'plugin:react/recommended', 'plugin:flowtype/recommended'],
+  'plugins': ['prettier', 'flowtype', 'react'],
   env: {
     'es6': true
   },
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 6,
+    ecmaVersion: 2017,
     ecmaFeatures: {
       'jsx': true
     }

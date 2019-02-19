@@ -1,15 +1,16 @@
-const makeSeed = require('../../makeSeed.js'),
-  users = makeSeed.makeUsers(),
-  adventures = makeSeed.makeAdventures(),
-  reviews = makeSeed.makeReviews();
+const makeSeed = require('../../makeSeed.js');
 
-exports.seed = function(knex, Promise) {
+const users = makeSeed.makeUsers();
+const adventures = makeSeed.makeAdventures();
+const reviews = makeSeed.makeReviews();
+
+exports.seed = function seed(knex) {
   // Deletes ALL existing entries
   return knex('users').del()
     .then(() => {
-      return knex('adventures').del()
+      return knex('adventures').del();
     }).then(() => {
-      return knex('reviews').del()
+      return knex('reviews').del();
     }).then(() => {
       return knex('users').insert(users);
     }).then(() => {

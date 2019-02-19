@@ -3,10 +3,10 @@ module.exports = {
     name: 'gutsyreviews',
     script: 'server/index.js',
     env: {
-      NODE_ENV: "development"
+      NODE_ENV: 'development'
     },
-    env_production : {
-      NODE_ENV: "production"
+    env_production: {
+      NODE_ENV: 'production'
     }
   }],
   deploy: {
@@ -20,4 +20,4 @@ module.exports = {
       'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js --env production'
     }
   }
-}
+};
