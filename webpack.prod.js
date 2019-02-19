@@ -17,7 +17,10 @@ module.exports = merge(common, {
     }),
     new CompressionPlugin({
       test: /\.jsx?/,
-      include: SRC_DIR
+      algorithm: 'gzip',
+      include: SRC_DIR,
+      threshold: 10240,
+      minRatio: 0.8
     })
   ],
   devtool: 'source-map',

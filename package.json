@@ -7,7 +7,7 @@
     "migrate": "npx knex migrate:latest",
     "seed": "npx knex seed:run",
     "react-prod": "webpack --config webpack.prod.js",
-    "react-dev": "webpack-dev-server -d --watch --display-error-details --config webpack.dev.js",
+    "react-dev": "webpack -d --watch --display-error-details --config webpack.dev.js",
     "server-dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "restart": "pm2 startOrRestart ecosystem.config.js",
