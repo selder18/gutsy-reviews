@@ -6,7 +6,7 @@ import SubmitReview from './components/SubmitReview';
 import ReviewsList from './components/ReviewsList';
 import { indexStyling } from '../style';
 
-const server = process.env.AXIOS_LOCATION || '';
+const server = 'http://ec2-13-58-86-122.us-east-2.compute.amazonaws.com';
 
 const Reviews = ({ id }: { id: number }) => {
   const [
