@@ -1,16 +1,17 @@
 require('dotenv').config();
 const Promise = require('bluebird');
 const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const db = require('../db/index.js');
 
 const app = express();
 Promise.promisifyAll(app);
-const path = require('path');
-const db = require('../db/index.js')
-;
 
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('*.js', function callback(req, res, next) {
