@@ -1,7 +1,5 @@
+exports.up = function migrateUp(knex, Promise) {
 
-exports.up = function(knex, Promise) {
-
-  
   return Promise.all([
     knex.schema.createTable('users', (table) => {
       table.increments('id').primary();
@@ -36,14 +34,14 @@ exports.up = function(knex, Promise) {
       table.integer('thumbs_down')
         .nullable();
     })
-  ])
+  ]);
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function migrateDown(knex, Promise) {
   
   return Promise.all([
     knex.schema.dropTable('users'),
     knex.schema.dropTable('adventures'),
     knex.schema.dropTable('reviews')
-  ])
+  ]);
 };

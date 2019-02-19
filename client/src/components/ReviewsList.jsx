@@ -1,14 +1,16 @@
-import React from 'react';
-import ReviewItem from './ReviewItem.jsx';
-import { list } from '../../style.js';
+// @flow
 
-export default (props: Object) => {
-  const reviews: Array<Object> = props.reviews.reverse(); //reversing the array so newest is shown first
+import React from 'react';
+import ReviewItem from './ReviewItem';
+import { list } from '../../style';
+
+const ReviewsList = ({ reviews }: { reviews: Array<Object> }) => {
+  const reviewsOrdered: Array<Object> = reviews.reverse(); // reversing the array so newest is shown first
   return (
     <div style={list.outer}>
       <div style={list.inner}>
-        {reviews.map((review, index) => (
-          <div key={index}>
+        {reviewsOrdered.map(review => (
+          <div key={review.id}>
             <ReviewItem review={review} />
             &nbsp;
             <br />
@@ -17,5 +19,6 @@ export default (props: Object) => {
       </div>
     </div>
   );
-}
+};
 
+export default ReviewsList;
