@@ -7,7 +7,7 @@ import moment from 'moment';
 import { submit } from '../../style';
 import '@babel/polyfill';
 
-const server = process.env.AXIOS_LOCATION || 'http://localhost:3000';
+const server = process.env.AXIOS_LOCATION || '';
 
 const SubmitReview = (props: Object) => {
   const [rating: number, setRating: Function] = useState(0);

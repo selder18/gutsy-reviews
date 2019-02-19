@@ -6,7 +6,7 @@ import SubmitReview from './components/SubmitReview';
 import ReviewsList from './components/ReviewsList';
 import { indexStyling } from '../style';
 
-const server = process.env.AXIOS_LOCATION || 'http://localhost:3000';
+const server = process.env.AXIOS_LOCATION || '';
 
 const Reviews = ({ id }: { id: number }) => {
   const [
