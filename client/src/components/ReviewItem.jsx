@@ -19,7 +19,7 @@ const ReviewItem = ({ review }: { review: Object }) => {
           <td style={item.userInfo}>
             <span style={item.username}>{review.username}</span>
             &nbsp;-&nbsp;
-            <span style={item.timestamp}>{review.timestamp.slice(0, 10)}</span>
+            <span style={item.timestamp}>{review.timestamp}</span>
             {/* The slice is to only get the date and not time */}
             &nbsp;&nbsp;&nbsp;
             <StarsRating

@@ -9,7 +9,7 @@
     "react-prod": "webpack --config webpack.prod.js",
     "react-dev": "webpack -d --watch --display-error-details --config webpack.dev.js",
     "server-dev": "nodemon server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "update": "pm2 kill && pm2 start ecosystem.config.js --env production",
     "deploy": "pm2 deploy ecosystem.config.js production",
@@ -65,6 +65,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "flow-bin": "^0.93.0",
+    "jest": "^24.1.0",
     "nodemon": "^1.18.10",
     "pm2": "^3.2.9",
     "prettier-eslint": "^8.8.2"

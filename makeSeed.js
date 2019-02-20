@@ -31,11 +31,12 @@ const makeSeed = {
       const randomNumber = Math.floor(Math.random() * 7); // make a random number of comments between 0-7 for each adventure
       for (let j = 0; j < randomNumber; j += 1) {
         const randomSentences = faker.random.number({min: 1, max: 3});
+        const timestamp = faker.date.between('2015-01-01', '2019-02-07'); // create the random date
         const obj = {
           adventure_id: i,
           poster_id: faker.random.number({min: 1, max: 100}),
           review_text: faker.lorem.lines(randomSentences),
-          timestamp: faker.date.between('2015-01-01', '2019-02-07'),
+          timestamp: timestamp.toISOString().slice(0, 10), // convert the date to YYYY-MM-DD format as string
           stars: faker.random.number({min: 1, max: 5}),
           thumbs_up: faker.random.number({min: 0, max: 20}),
           thumbs_down: faker.random.number({min: 0, max: 20})

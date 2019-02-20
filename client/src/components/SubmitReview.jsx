@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import StarsRating from 'react-star-ratings';
-import { image } from 'faker';
-import moment from 'moment';
 import { submit } from '../../style';
 import '@babel/polyfill';
 
@@ -17,13 +15,21 @@ const SubmitReview = (props: Object) => {
     const result: Object = await Axios.post(`${server}/query`, body);
     return result.data[0].id;
   };
-  const makeUsersBody = (name: string): Object => ({
-    table: 'users',
-    payload: {
-      name,
-      avatar: image.avatar()
-    }
-  });
+  const getAvatar = async (): any => {
+    const result: Object = await Axios.get('https://randomuser.me/api/');
+    return result.data.results[0].picture.thumbnail;
+  };
+  const makeUsersBody = async (name: string): Object => {
+    const avatar: any = await getAvatar();
+    return {
+      table: 'users',
+      payload: {
+        name,
+        avatar
+        // avatar: internet.avatar()
+      }
+    };
+  };
   const getPosterID = async (name: string): Promise<any> => {
     const results: Object = await Axios.get(`${server}/query/user/${name}`);
     if (results.data.length) {
@@ -31,7 +37,7 @@ const SubmitReview = (props: Object) => {
       return results.data[0].id;
     }
     // else if user doesn't exist, make the user
-    const body: Object = makeUsersBody(name); // make the body to submit in the POST request
+    const body: Object = await makeUsersBody(name); // make the body to submit in the POST request
     const userID: Promise<mixed> = await insertUser(body); // and then return the id of the inserted user
     return userID;
   };
@@ -62,7 +68,7 @@ const SubmitReview = (props: Object) => {
       .value; // grab username
     const name: number = await getPosterID(username); // get id of user/make new user (see above function)
     const stars: number = rating; // grab stars
-    const date: string = moment().format(); // find current date
+    const date: string = new Date().toISOString().slice(0, 10); // find current date
     const body: Object = makeReviewBody(name, review, date, stars); // makes the body for submitting reviews
     Axios.post(`${server}/query`, body)
       .then(
