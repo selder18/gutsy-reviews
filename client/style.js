@@ -8,11 +8,15 @@ module.exports = {
 
   submit: {
     main: {
-      padding: '10px'
+      paddingBottom: '10px',
+      height: '25%'
+    },
+    form: {
+      height: '100%'
     },
     text: {
       width: '90%',
-      height: '30%',
+      height: '85%',
       padding: '5px',
       resize: 'none',
       borderRadius: '15px',
@@ -30,7 +34,7 @@ module.exports = {
 
   list: {
     outer: {
-      height: '70%',
+      height: '75%',
       padding: '5px',
       borderTop: '1px #242121 solid'
     },
