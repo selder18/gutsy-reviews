@@ -20,7 +20,9 @@ module.exports = {
       padding: '5px',
       resize: 'none',
       borderRadius: '15px',
-      border: '1px #bababa solid'
+      border: '1px #bababa solid',
+      minHeight: '150px',
+      maxHeight: '250px'
     },
     username: {
       marginLeft: '2px',
