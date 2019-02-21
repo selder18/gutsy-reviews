@@ -36,7 +36,8 @@ module.exports = {
   list: {
     outer: {
       height: '75%',
-      borderTop: '1px #242121 solid'
+      borderTop: '1px #242121 solid',
+      paddingTop: '5px'
     },
     inner: {
       height: '100%',
