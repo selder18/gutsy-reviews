@@ -3,8 +3,7 @@ module.exports = {
     display: 'inline-block',
     width: '100%',
     padding: '5px',
-    borderRadius: '10px',
-    border: '2px #242121 solid'
+    height: '100%'
   },
 
   submit: {
@@ -31,11 +30,12 @@ module.exports = {
 
   list: {
     outer: {
+      height: '100%',
       padding: '5px',
       borderTop: '1px #242121 solid'
     },
     inner: {
-      height: '80%px',
+      height: '80%',
       overflow: 'auto'
     }
   },
