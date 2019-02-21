@@ -2,7 +2,7 @@ module.exports = {
   indexStyling: {
     display: 'inline-block',
     width: '100%',
-    padding: '5px',
+    // padding: '5px',
     height: '100%'
   },
 
@@ -23,6 +23,7 @@ module.exports = {
       border: '1px #bababa solid'
     },
     username: {
+      marginLeft: '2px',
       borderRadius: '5px',
       border: '1px #bababa solid',
       paddingLeft: '5px'
@@ -35,7 +36,6 @@ module.exports = {
   list: {
     outer: {
       height: '75%',
-      padding: '5px',
       borderTop: '1px #242121 solid'
     },
     inner: {

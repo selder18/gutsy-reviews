@@ -14,7 +14,7 @@ const Reviews = () => {
   const [
     currentAdventure: number,
     setCurrentAdventure: Function //eslint-disable-line
-  ] = useState(1);
+  ] = useState(10);
   const [reviews: Array<Object>, setReviews: Function] = useState([]);
 
   const getReviews = (): void => {
