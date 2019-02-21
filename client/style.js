@@ -9,7 +9,9 @@ module.exports = {
   submit: {
     main: {
       paddingBottom: '10px',
-      height: '25%'
+      height: '25%',
+      minHeight: '150px',
+      maxHeight: '250px'
     },
     form: {
       height: '100%'
@@ -20,9 +22,7 @@ module.exports = {
       padding: '5px',
       resize: 'none',
       borderRadius: '15px',
-      border: '1px #bababa solid',
-      minHeight: '150px',
-      maxHeight: '250px'
+      border: '1px #bababa solid'
     },
     username: {
       marginLeft: '2px',
