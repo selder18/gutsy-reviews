@@ -88,7 +88,7 @@ const SubmitReview = (props: Object) => {
 
   return (
     <div style={submit.main}>
-      <form id="submitReview">
+      <form id="submitReview" style={submit.form}>
         <input
           id="submitUsername"
           type="text"
