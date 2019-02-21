@@ -10,14 +10,16 @@ const ReviewsList = ({ reviews }: { reviews: Array<Object> }) => {
   ); // sorting array by time
   return (
     <div style={list.outer}>
-      <div style={list.inner}>
-        {reviewsOrdered.map(review => (
-          <div key={review.id}>
-            <ReviewItem review={review} />
-            &nbsp;
-            <br />
-          </div>
-        ))}
+      <div style={list.middle}>
+        <div style={list.inner}>
+          {reviewsOrdered.map(review => (
+            <div key={review.id}>
+              <ReviewItem review={review} />
+              &nbsp;
+              <br />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

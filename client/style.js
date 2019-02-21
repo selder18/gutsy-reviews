@@ -1,6 +1,7 @@
 module.exports = {
   indexStyling: {
-    display: 'inline-block',
+    display: 'flex',
+    flexFlow: 'column',
     width: '100%',
     // padding: '5px',
     height: '100%'
@@ -37,13 +38,13 @@ module.exports = {
 
   list: {
     outer: {
-      height: '75%',
+      flex: '1',
       borderTop: '1px #242121 solid',
-      paddingTop: '5px'
+      paddingTop: '5px',
+      overflow: 'auto'
     },
     inner: {
       height: '100%',
-      overflow: 'auto'
     }
   },
   
