@@ -1,7 +1,7 @@
 module.exports = {
   indexStyling: {
     display: 'inline-block',
-    width: '900px',
+    width: '100%',
     padding: '5px',
     borderRadius: '10px',
     border: '2px #242121 solid'
@@ -13,7 +13,7 @@ module.exports = {
     },
     text: {
       width: '90%',
-      height: '200px',
+      height: '20%',
       padding: '5px',
       resize: 'none',
       borderRadius: '15px',
@@ -35,7 +35,7 @@ module.exports = {
       borderTop: '1px #242121 solid'
     },
     inner: {
-      height: '700px',
+      height: '80%px',
       overflow: 'auto'
     }
   },

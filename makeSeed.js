@@ -28,7 +28,7 @@ const makeSeed = {
   makeReviews: () => {
     const comments = [];
     for (let i = 1; i <= 100; i += 1) {
-      const randomNumber = Math.floor(Math.random() * 7); // make a random number of comments between 0-7 for each adventure
+      const randomNumber = Math.floor(Math.random() * 8) + 2; // make a random number of comments between 2-10 for each adventure
       for (let j = 0; j < randomNumber; j += 1) {
         const randomSentences = faker.random.number({min: 1, max: 3});
         const timestamp = faker.date.between('2015-01-01', '2019-02-07'); // create the random date
