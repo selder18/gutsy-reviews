@@ -36,7 +36,7 @@ const Reviews = () => {
       window.addEventListener(
         'changeID',
         event => {
-          setCurrentAdventure(event.detail);
+          setCurrentAdventure(event.detail[0]);
         },
         false
       );
