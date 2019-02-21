@@ -12,7 +12,7 @@ module.exports = {
     },
     text: {
       width: '90%',
-      height: '20%',
+      height: '30%',
       padding: '5px',
       resize: 'none',
       borderRadius: '15px',
@@ -30,12 +30,12 @@ module.exports = {
 
   list: {
     outer: {
-      height: '100%',
+      height: '70%',
       padding: '5px',
       borderTop: '1px #242121 solid'
     },
     inner: {
-      height: '80%',
+      height: '100%',
       overflow: 'auto'
     }
   },
