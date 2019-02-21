@@ -6,7 +6,7 @@
   "scripts": {
     "migrate": "npx knex migrate:latest",
     "seed": "npx knex seed:run",
-    "react-prod": "webpack -p --config webpack.prod.js",
+    "react-prod": "webpack --config webpack.prod.js",
     "react-dev": "webpack -d --watch --display-error-details --config webpack.dev.js",
     "server-dev": "nodemon server/index.js",
     "test": "jest",

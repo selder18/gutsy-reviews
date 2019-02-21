@@ -17,7 +17,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:microdynamicservices/gutsy-reviews',
       path: '/home/ubuntu/gutsyreviews',
-      'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js --env production && npm run react-prod'
+      'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js --env production'
     }
   }
 };
