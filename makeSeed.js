@@ -36,7 +36,7 @@ const makeSeed = {
           adventure_id: i,
           poster_id: faker.random.number({min: 1, max: 100}),
           review_text: faker.lorem.lines(randomSentences),
-          timestamp: timestamp.toISOString().slice(0, 10), // convert the date to YYYY-MM-DD format as string
+          timestamp: timestamp.toISOString(), // convert the date to YYYY-MM-DD format as string
           stars: faker.random.number({min: 1, max: 5}),
           thumbs_up: faker.random.number({min: 0, max: 20}),
           thumbs_down: faker.random.number({min: 0, max: 20})

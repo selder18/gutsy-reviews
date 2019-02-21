@@ -10,11 +10,11 @@ const server =
   process.env.AXIOS_LOCATION ||
   'http://ec2-13-58-86-122.us-east-2.compute.amazonaws.com';
 
-const Reviews = ({ id }: { id: number }) => {
+const Reviews = () => {
   const [
     currentAdventure: number,
     setCurrentAdventure: Function //eslint-disable-line
-  ] = useState(id || 1);
+  ] = useState(1);
   const [reviews: Array<Object>, setReviews: Function] = useState([]);
 
   const getReviews = (): void => {
@@ -31,6 +31,14 @@ const Reviews = ({ id }: { id: number }) => {
       );
   };
 
+  useEffect(
+    (): void => {
+      window.addEventListener('changeID', event => {
+        setCurrentAdventure(event.detail);
+      });
+    }
+  );
+
   useEffect((): void => {
     getReviews();
   }, [currentAdventure]); // only want to update if the id changes, else we invoke getReviews manually
@@ -42,7 +50,6 @@ const Reviews = ({ id }: { id: number }) => {
     </div>
   );
 };
-// $FlowIgnoreError
 ReactDOM.render(<Reviews />, (document.getElementById('reviews'): any));
 
 export default Reviews;

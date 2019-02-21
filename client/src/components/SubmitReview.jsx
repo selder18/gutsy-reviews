@@ -26,7 +26,6 @@ const SubmitReview = (props: Object) => {
       payload: {
         name,
         avatar
-        // avatar: internet.avatar()
       }
     };
   };
@@ -68,7 +67,7 @@ const SubmitReview = (props: Object) => {
       .value; // grab username
     const name: number = await getPosterID(username); // get id of user/make new user (see above function)
     const stars: number = rating; // grab stars
-    const date: string = new Date().toISOString().slice(0, 10); // find current date
+    const date: string = new Date().toISOString(); // find current date
     const body: Object = makeReviewBody(name, review, date, stars); // makes the body for submitting reviews
     Axios.post(`${server}/query`, body)
       .then(
