@@ -33,9 +33,13 @@ const Reviews = () => {
 
   useEffect(
     (): void => {
-      window.addEventListener('changeID', event => {
-        setCurrentAdventure(event.detail);
-      });
+      window.addEventListener(
+        'changeID',
+        event => {
+          setCurrentAdventure(event.detail);
+        },
+        false
+      );
     }
   );
 
