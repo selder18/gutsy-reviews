@@ -89,7 +89,8 @@ module.exports = {
     review: {
       wordWrap: 'normal',
       colSpan: 4,
-      whiteSpace: 'pre-wrap'
+      whiteSpace: 'pre-wrap',
+      verticalAlign: 'top'
     }
   }
 };
