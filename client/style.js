@@ -18,7 +18,7 @@ module.exports = {
       height: '100%'
     },
     text: {
-      width: 'calc(90% - 55px)',
+      width: 'calc(100% - 55px)',
       height: '85%',
       padding: '5px',
       resize: 'none',
