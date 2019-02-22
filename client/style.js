@@ -10,7 +10,7 @@ module.exports = {
     main: {
       paddingBottom: '10px',
       height: '25%',
-      minHeight: '150px',
+      minHeight: '100px',
       maxHeight: '250px'
     },
     form: {
@@ -52,6 +52,7 @@ module.exports = {
     },
     inner: {
       height: '100%',
+      width: 'calc(100% - 70px)'
     }
   },
   
