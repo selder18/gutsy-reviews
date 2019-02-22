@@ -23,16 +23,19 @@ module.exports = {
       padding: '5px',
       resize: 'none',
       borderRadius: '15px',
-      border: '1px #bababa solid'
+      border: '1px #bababa solid',
+      outline: 'none'
     },
     username: {
       marginLeft: '2px',
       borderRadius: '5px',
       border: '1px #bababa solid',
-      paddingLeft: '5px'
+      paddingLeft: '5px',
+      outline: 'none'
     },
     button: {
-      borderRadius: '5px'
+      borderRadius: '5px',
+      outline: 'none'
     }
   },
 
