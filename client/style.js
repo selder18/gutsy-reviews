@@ -15,10 +15,11 @@ module.exports = {
     },
     form: {
       height: '100%',
-      position: 'relative'
+      position: 'relative',
+      padding: '0px 12px 0px 12px'
     },
     text: {
-      width: 'calc(100% - 70px)',
+      width: '100%',
       height: '85%',
       padding: '5px',
       resize: 'none',
@@ -36,7 +37,9 @@ module.exports = {
     button: {
       position: 'absolute',
       borderRadius: '5px',
-      outline: 'none'
+      outline: 'none',
+      right: '15px',
+      bottom: '-35px'
     }
   },
 
