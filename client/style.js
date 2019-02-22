@@ -3,7 +3,6 @@ module.exports = {
     display: 'flex',
     flexFlow: 'column',
     width: '100%',
-    // padding: '5px',
     height: '100%'
   },
 
@@ -15,7 +14,8 @@ module.exports = {
       maxHeight: '250px'
     },
     form: {
-      height: '100%'
+      height: '100%',
+      position: 'relative'
     },
     text: {
       width: 'calc(100% - 70px)',
@@ -34,6 +34,7 @@ module.exports = {
       outline: 'none'
     },
     button: {
+      position: 'absolute',
       borderRadius: '5px',
       outline: 'none'
     }
