@@ -52,13 +52,13 @@ module.exports = {
     },
     inner: {
       height: '100%',
-      width: 'calc(100% - 70px)'
+      overflow: 'auto'
     }
   },
   
   item: {
     table: {
-      width: '100%',
+      width: 'calc(100% - 70px)',
       display: 'inline-table'
     },
     topRow: {
