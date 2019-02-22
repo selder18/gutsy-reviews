@@ -60,7 +60,8 @@ module.exports = {
     table: {
       width: 'calc(100% - 70px)',
       display: 'inline-table',
-      minHeight: '69px'
+      minHeight: '69px',
+      padding: '5px 0px'
     },
     topRow: {
       height: '25px'
