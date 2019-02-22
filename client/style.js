@@ -52,7 +52,8 @@ module.exports = {
     },
     inner: {
       height: '100%',
-      overflow: 'auto'
+      overflow: 'auto',
+      minHeight: '69px'
     }
   },
   
