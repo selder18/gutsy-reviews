@@ -52,15 +52,15 @@ module.exports = {
     },
     inner: {
       height: '100%',
-      overflow: 'auto',
-      minHeight: '69px'
+      overflow: 'auto'
     }
   },
   
   item: {
     table: {
       width: 'calc(100% - 70px)',
-      display: 'inline-table'
+      display: 'inline-table',
+      minHeight: '69px'
     },
     topRow: {
       height: '25px'
