@@ -23,7 +23,7 @@ module.exports = {
       height: '85%',
       padding: '5px',
       resize: 'none',
-      borderRadius: '15px',
+      borderRadius: '10px',
       border: '1px #bababa solid',
       outline: 'none'
     },
