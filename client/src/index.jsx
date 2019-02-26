@@ -8,7 +8,7 @@ import { indexStyling } from '../style';
 
 const server =
   process.env.AXIOS_LOCATION ||
-  'http://ec2-13-58-86-122.us-east-2.compute.amazonaws.com';
+  'http://ec2-18-191-155-155.us-east-2.compute.amazonaws.com';
 
 const Reviews = () => {
   const [
