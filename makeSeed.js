@@ -47,9 +47,3 @@ const makeSeed = {
     return comments;
   }
 };
-
-const fakeIt = () => {
-  
-}
-
-module.exports = fakeIt;
