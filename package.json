@@ -13,18 +13,19 @@
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "update": "pm2 kill && pm2 start ecosystem.config.js --env production",
     "deploy": "pm2 deploy ecosystem.config.js production",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "db": "psql btsi-reviews"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microdynamicservices/gutsy-reviews.git"
+    "url": "git+https://github.com/btsi/gutsy-reviews.git"
   },
-  "author": "James Boyett",
+  "author": "James Boyett and Scott Elder",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/microdynamicservices/gutsy-reviews/issues"
+    "url": "https://github.com/btsi/gutsy-reviews/issues"
   },
-  "homepage": "https://github.com/microdynamicservices/gutsy-reviews#readme",
+  "homepage": "https://github.com/btsi/gutsy-reviews#readme",
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/polyfill": "^7.2.5",
