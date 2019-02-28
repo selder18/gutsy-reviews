@@ -1,13 +1,26 @@
+const fakeIt = require('../../fakeit.js')
+const mockData = require ('../../mockData.js')
 
-exports.seed = function(knex, Promise) {
+module.exports.seedFake = (knex, Promise) => {
   // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+  return knex('users').del()
+    .then(() => {
+      return knex('adventures').del()
+    }).then(() => {
+      return knex('reviews').del()
+    }).then(() => {
+      //Sows the fake seeds into the the DB
+      return knex('users').insert(fakeIt.users())
+    }).then(() => {
+      return knex('adventures').insert(fakeIt.users())
+    }).then(() => {
+      return knex('reviews').insert(fakeIt.reviews)
+    })
+  };
+
+module.exports.adventureSeed = (knex, Promise) => {
+  return knex('adventures').del()
+    .then(() => {
+      return knex('adventures').insert(mockData)
+    })
+}
