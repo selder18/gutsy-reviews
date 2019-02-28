@@ -14,8 +14,16 @@ exports.up = function(knex, Promise) {
       reviews.timestamp('created_at').defaultTo(knex.fn.now());
       reviews.integer('stars');
       reviews.string('comments').notNullable();
-      reviews.foreign('user_id').references('id').inTable('users').notNullable();
-      reviews.foreign('adventure_id').reference('id').inTable('adventures').notNullable();
+      reviews.integer('user_id').references('users.id').notNullable();
+      reviews.integer('adventure_id').references('adventures.id').notNullable();
     })
   ])
+};
+
+exports.down = function migrateDown(knex, Promise) {
+  return Promise.all([
+    knex.schema.dropTable('reviews'), //This table must be first because it contains notNull foreign keys pointing to other two
+    knex.schema.dropTable('users'),
+    knex.schema.dropTable('adventures')
+  ]);
 };

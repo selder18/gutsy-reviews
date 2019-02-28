@@ -21,6 +21,6 @@ const mockData = require ('../../mockData.js')
 exports.seed = (knex) => {
   return knex('adventures').del()
     .then(() => {
-      return knex('adventures').insert(mockData)
+      return knex('adventures').insert(mockData.data)
     })
 };

@@ -1,0 +1,26 @@
+select usename from pg_user;
+select passwd from pg_user;
+\d table
+\d
+alter user scottelder password
+select passwd from pg_user;
+select usename from pg_user;
+/d pg_user
+;
+\d pg_user;
+select passwd from pg_user;
+select passwd from pg_user where usename=scottelder;
+select passwd from pg_user where scottelder=usename;
+select passwd from pg_user where (usename='scottelder');
+alter user scottelder password;
+alter user scottelder password '';
+select passwd from pg_user where(usename='scottelder')
+;
+\d adventures
+describe reviews
+;
+\d reviews
+show adventures;
+\dt
+\d adventures
+\s adventures
