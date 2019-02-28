@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('users', (users) => {
@@ -19,8 +18,4 @@ exports.up = function(knex, Promise) {
       reviews.foreign('adventure_id').reference('id').inTable('adventures').notNullable();
     })
   ])
-};
-
-exports.down = function(knex, Promise) {
-  
 };

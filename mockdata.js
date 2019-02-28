@@ -681,4 +681,4 @@ data.events = [{
   "price": 2000
 }]
 
-module.exports.data = data;
+module.exports.data = data.events;

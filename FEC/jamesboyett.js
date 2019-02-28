@@ -1,10 +1,11 @@
+/*
 const makeSeed = require('../../makeSeed.js');
 
 const users = makeSeed.makeUsers();
 const adventures = makeSeed.makeAdventures();
 const reviews = makeSeed.makeReviews();
 
-exports.seed = function seed(knex) {
+ exports.seed =  function seed(knex) {
   // Deletes ALL existing entries
   return knex('users').del()
     .then(() => {
@@ -19,3 +20,4 @@ exports.seed = function seed(knex) {
       return knex('reviews').insert(reviews);
     });
 };
+*/ 
