@@ -11,9 +11,9 @@ exports.up = function(knex, Promise) {
     }),
     knex.schema.createTable('reviews', (reviews) => {
       reviews.increments('id').primary();
-      reviews.timestamp('created_at').defaultTo(knex.fn.now());
+      reviews.integer('timestamp')
       reviews.integer('stars');
-      reviews.string('comments').notNullable();
+      reviews.string('comment').notNullable();
       reviews.integer('user_id').references('users.id').notNullable();
       reviews.integer('adventure_id').references('adventures.id').notNullable();
     })
