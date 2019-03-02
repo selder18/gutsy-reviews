@@ -2,9 +2,11 @@ node_modules
 .DS_Store
 .env
 logfile
+package-lock.json
 client/dist/bundle.js
 client/dist/1.bundle.js
 client/dist/1.bundle.js.gz
 client/dist/bundle.js.gz
 client/dist/bundle.js.map.gz
 client/dist/bundle.js.map
+*.csv
