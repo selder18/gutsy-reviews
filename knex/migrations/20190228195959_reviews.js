@@ -4,20 +4,27 @@ exports.up = function(knex, Promise) {
       users.increments('id').primary();
       users.string('username').notNullable();
       users.string('avatar').notNullable(); //This is a string because it will refer to a location to look up an image
+      users.index('id');
+      users.index('username');
     }),
     knex.schema.createTable('adventures', (adventures) => {
       adventures.increments('id').primary();
       adventures.string('title').notNullable();
+      adventures.index('id');
+      adventures.index('title');
     }),
     knex.schema.createTable('reviews', (reviews) => {
       reviews.increments('id').primary();
-      reviews.string('timestamp')
+      reviews.string('timestamp');
       reviews.integer('stars');
       reviews.string('comment').notNullable();
-      reviews.integer('user_id').notNullable();
-      // reviews.integer('user_id').references('users.id').notNullable();
-      reviews.integer('adventure_id').notNullable();
-      // reviews.integer('adventure_id').references('adventures.id').notNullable();
+      reviews.integer('user_id').references('users.id').notNullable();
+      reviews.integer('adventure_id').references('adventures.id').notNullable();
+      // reviews.integer('user_id').notNullable();
+      // reviews.integer('adventure_id').notNullable();
+      reviews.index('id');
+      reviews.index('user_id');
+      reviews.index('adventure_id');
     })
   ])
 };
