@@ -8,10 +8,10 @@ module.exports = {
     client: 'pg',
     connection: process.env.PG_CONNECTION_STRING,
     migrations: {
-      directory: './knex/migrations'
+      directory: './db/migrations'
     },
     seeds: {
-      directory: './knex/seeds'
+      directory: './db/seeds'
     }
   },
 
