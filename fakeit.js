@@ -79,7 +79,6 @@ const fakeIt = {
 }
 
 const csvPreparation = (array) => {
-  let csvCoercion = "username,avatar\r\n";
   array.forEach(function(rowArray){
     let row = rowArray.join(",");
     csvCoercion += row + "\r\n";
@@ -94,21 +93,21 @@ const csvContentsReviews = csvPreparation(fakeIt.makeReviewsArray());
 const writeUsers = (bigString) => {
   const stream = fs.createWriteStream('./users.csv');
   for (let i = 0; i < 1000; i++) {
-    stream.write(bigString.substring(17)); //this is to cut out the first 'formatting' line of the CSV
+    stream.write(bigString); 
   }
 }
 
 const writeAdventures = (bigString) => {
   const stream = fs.createWriteStream('./adventures.csv');
   for (let i = 0; i < 1000; i++) {
-    stream.write(bigString.substring(17)) //this is to cut out the first 'formatting' line of the CSV
+    stream.write(bigString)
   }
 }
 
 const writeReviews = (bigString) => {
   const stream = fs.createWriteStream('./reviews.csv');
   for (let i = 0; i < 10000; i++) {
-    stream.write(bigString.substring(17))
+    stream.write(bigString)
   }
 }
 

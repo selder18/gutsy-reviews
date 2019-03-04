@@ -14,8 +14,10 @@ exports.up = function(knex, Promise) {
       reviews.string('timestamp')
       reviews.integer('stars');
       reviews.string('comment').notNullable();
-      reviews.integer('user_id').references('users.id').notNullable();
-      reviews.integer('adventure_id').references('adventures.id').notNullable();
+      reviews.integer('user_id').notNullable();
+      // reviews.integer('user_id').references('users.id').notNullable();
+      reviews.integer('adventure_id').notNullable();
+      // reviews.integer('adventure_id').references('adventures.id').notNullable();
     })
   ])
 };
