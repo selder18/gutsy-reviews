@@ -3,14 +3,12 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('users', (users) => {
       users.increments('id').primary();
       users.string('username').notNullable();
-      users.string('avatar').notNullable(); //This is a string because it will refer to a location to look up an image
-      // users.index('id');
+      users.string('avatar').notNullable();
       users.index('username');
     }),
     knex.schema.createTable('adventures', (adventures) => {
       adventures.increments('id').primary();
-      adventures.string('title', 500).notNullable();
-      // adventures.index('id');
+      adventures.string('title').notNullable();
       adventures.index('title');
     }),
     knex.schema.createTable('reviews', (reviews) => {
@@ -20,9 +18,6 @@ exports.up = function(knex, Promise) {
       reviews.string('comment', 1000).notNullable();
       reviews.integer('user_id').references('users.id').notNullable();
       reviews.integer('adventure_id').references('adventures.id').notNullable();
-      // reviews.integer('user_id').notNullable();
-      // reviews.integer('adventure_id').notNullable();
-      // reviews.index('id');
       reviews.index('user_id');
       reviews.index('adventure_id');
       reviews.index('comment');
