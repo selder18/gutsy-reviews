@@ -38,7 +38,7 @@ app.post('/query', (req, res) => {
 });
 
 app.get('/query/user/:id', (req, res) => {
-  db('users')
+  db.knex('users')
     .select('id')
     .where('name', `${req.params.id}`)
     .then((data) => {
@@ -47,10 +47,11 @@ app.get('/query/user/:id', (req, res) => {
 });
 
 app.get('/query/reviews/:id', (req, res) => {
+  // db.knex(select('*').from('users').limit(10));
   db('reviews')
-    .join('users', 'reviews.poster_id', '=', 'users.id') // join table for users
+    .join('users', 'reviews.user_id', '=', 'users.id') // join table for users
     .join('adventures', 'reviews.adventure_id', '=', 'adventures.id') // join table for adventures
-    .select({username: 'users.name', adventure: 'adventures.name'}, 'reviews.id', 'users.avatar', 'reviews.review_text', 'reviews.timestamp', 'reviews.stars', 'reviews.thumbs_up', 'reviews.thumbs_down') // changes users.name to username and adventures.name to adventure, selects all required fields
+    .select({username: 'users.username', adventure: 'adventures.title', review_text: 'reviews.comment'}, 'reviews.id', 'users.avatar', 'reviews.timestamp', 'reviews.stars') // changes users.name to username and adventures.name to adventure, selects all required fields
     .where('reviews.adventure_id', req.params.id)
     .then((data) => {
       res.json(data);

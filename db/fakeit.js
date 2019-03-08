@@ -2,19 +2,7 @@ const faker = require('faker');
 const fs = require('fs');
 
 const fakeIt = {
-  // makeUsers: () => {
-  //   const users = [];
-  //   for (let i = 0; i < 100; i++) {
-  //   const userObj = {
-  //     username: faker.internet.userName(),
-  //     avatar: faker.image.avatar()
-  //   }
-  //     users.push(userObj);
-  //   }
-  //   return users;
-  // },
-  
-  makeUsersArray: () => {
+  makeUsers: () => {
     const users = [];
     for (let i = 0; i < 1000000; i++) {
       const userArray = [
@@ -26,18 +14,7 @@ const fakeIt = {
     return users;
   },
 
-  // makeAdventures: () => {
-  //   const adventures = [];
-  //   for (let i = 0; i < 1000; i++) {
-  //     const adventureObj = {
-  //       title: faker.company.catchPhrase()
-  //     }
-  //     adventures.push(adventureObj);
-  //     }
-  //   return adventures;
-  // },
-  
-  makeAdventuresArray: () => {
+  makeAdventures: () => {
     const adventures = [];
     for (let i = 0; i < 1000000; i++) {
       const adventuresArray = [
@@ -48,23 +25,9 @@ const fakeIt = {
     return adventures;
   },
 
-  // makeReviews: () => {
-  //   const reviews = [];
-  //   for (let i = 0; i < 1000; i++) {
-  //     const reviewObj = {
-  //       timestamp: faker.date.past(3000),
-  //       stars: faker.random.number({min:0, max:5}),
-  //       comment: faker.lorem.sentences(Math.ceil(Math.random() * 3)),
-  //       user_id: Math.ceil(Math.random() * 100), //Must be .ceil to avoid problems trying to assign to 0
-  //       adventure_id: Math.ceil(Math.random() * 100) //Must be .ceil to avoid problems trying to assign to 0
-  //   }
-  //   reviews.push(reviewObj);
-  //   }
-  //   return reviews;
-  // },
-  makeReviewsArray: () => {
+  makeReviews: () => {
     const reviews = [];
-    for (let i = 0; i < 3000000; i++) {
+    for (let i = 0; i < 3333333; i++) {
       const reviewObj = [
         faker.date.past(3000),
         faker.random.number({min:0, max:5}),
@@ -87,9 +50,9 @@ const csvPreparation = (array) => {
   return csvCoercion;
 };
 
-// const csvContentsUsers = csvPreparation(fakeIt.makeUsersArray());
-// const csvContentsAdventures = csvPreparation(fakeIt.makeAdventuresArray());
-const csvContentsReviews = csvPreparation(fakeIt.makeReviewsArray());
+// const csvContentsUsers = csvPreparation(fakeIt.makeUsers());
+// const csvContentsAdventures = csvPreparation(fakeIt.makeAdventures());
+const csvContentsReviews = csvPreparation(fakeIt.makeReviews());
 
 const writeUsers = (bigString) => {
   const stream = fs.createWriteStream('./db/users.csv');

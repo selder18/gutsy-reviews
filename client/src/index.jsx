@@ -7,8 +7,8 @@ import ReviewsList from './components/ReviewsList';
 import { indexStyling } from '../style';
 
 const server =
-  process.env.AXIOS_LOCATION ||
-  'http://ec2-18-191-155-155.us-east-2.compute.amazonaws.com';
+  'http://127.0.0.1:3000';
+  // 'http://ec2-18-191-155-155.us-east-2.compute.amazonaws.com';
 
 const Reviews = () => {
   const [
@@ -17,8 +17,15 @@ const Reviews = () => {
   ] = useState(10);
   const [reviews: Array<Object>, setReviews: Function] = useState([]);
 
+const numberwang = Math.ceil(Math.random() * 1000000);
+//   const getReviews = () => {
+//     Axios.get(`${server}/query/reviews/${currentAdventure}`)
+//       .then((result) => console.log(result, 'made it'))
+//       .catch((err) => console.log(err))
+//   };
+
   const getReviews = (): void => {
-    Axios.get(`${server}/query/reviews/${currentAdventure}`)
+    Axios.get(`${server}/query/reviews/${numberwang}`)
       .then(
         (data: Object): void => {
           setReviews(data.data);
